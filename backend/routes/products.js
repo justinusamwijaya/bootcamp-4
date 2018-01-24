@@ -64,9 +64,18 @@ roo
     mo = req.params.id.split("DanDaniDanu")
     console.log(mo)
     if(mo[0]=="kategori"){
-        pro.find({Kategori:mo[1]},(mai,moi)=>{
+        pro.find({},(mai,moi)=>{
             if(mai)res.status(500).send(mai);
-            else res.json(moi);
+            else {
+                array=[]
+                yoo = mo[1].toLowerCase()
+                for(i=0;i<moi.length;i++){
+                    if(moi[i].Kategori.toLowerCase()==yoo){
+                        array.push(moi[i])
+                    }
+                }
+                res.json(array)
+            }
         })
     }else if(mo[0]=="id"){
         pro.findById(mo[1],(mai,moi)=>{
