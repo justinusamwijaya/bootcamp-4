@@ -9,6 +9,7 @@ import {Http,RequestOptions,Headers} from "@angular/Http";
 })
 export class DetailComponent implements OnInit {
   params
+  units 
   constructor(private roo:Router, private ht:Http, private aktiv:ActivatedRoute) { }
 
   ngOnInit() {
@@ -21,7 +22,7 @@ export class DetailComponent implements OnInit {
     this.ht.get("http://localhost:3000/go/list/idDanDaniDanu"+this.params)
     .subscribe(
       result=>{
-        console.log(result.json())
+        this.units=result.json()
       },
       error=>{
         console.log(error)
