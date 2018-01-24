@@ -34,6 +34,7 @@ export class AddnewComponent implements OnInit {
       result=>{
         console.log(result.json())
         this.roo.navigate([""])
+        location.reload();
       },
       error=>{
         console.log(error)
