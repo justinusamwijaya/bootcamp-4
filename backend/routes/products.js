@@ -45,8 +45,11 @@ roo
         else{
             array = []
             array.push(moi[0].Kategori)
-            for(i=1;i<moi.length;i++){
+            for(i=0;i<moi.length;i++){
                 for(j=0;j<array.length;j++){
+                    if(moi[i].Kategori.toLowerCase()==array[j].toLowerCase()){
+                        break;
+                    }
                     if(moi[i].Kategori.toLowerCase()!==array[j].toLowerCase()&&j==array.length-1){
                         array.push(moi[i].Kategori)
                     }
