@@ -1,0 +1,19 @@
+*{
+    font-family: "Open Sans" !important;
+    src: local('Open Sans'), local('OpenSans'), url('http://themes.googleusercontent.com/static/fonts/opensans/v5/cJZKeOuBrn4kERxqtaUH3T8E0i7KZn-EPnyo3HZu7kw.woff') format('woff');
+ }
+
+#navbuhr{
+    border-radius: 0px;
+    background:rgba(255, 255, 255, 0.521);
+    border:0px;
+    width:100%;
+    top:0%;
+    position:fixed;
+}
+.centered{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align: center;
+}
