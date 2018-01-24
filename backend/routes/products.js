@@ -66,7 +66,7 @@ roo
             else res.json(moi);
         })
     }else if(mo[0]=="id"){
-        pro.find({_id:mo[1]},(mai,moi)=>{
+        pro.findById(mo[0],(mai,moi)=>{
             if(mai)res.status(500).send(mai);
             else res.json(moi);
         })
