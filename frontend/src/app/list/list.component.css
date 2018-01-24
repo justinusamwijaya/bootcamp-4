@@ -1,0 +1,14 @@
+.centered{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align: center;
+}
+button{
+    padding:10px;
+    border:none;
+    border-radius:2px;
+}
+button:active,button:focus{
+    outline:none;
+}

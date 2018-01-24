@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import{Http} from "@angular/Http";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-root',
@@ -8,7 +9,7 @@ import{Http} from "@angular/Http";
 })
 export class AppComponent implements OnInit{
   kategori = []
-  constructor(private ht:Http){
+  constructor(private ht:Http, private roo:Router){
 
   }
   ngOnInit(){
@@ -24,14 +25,8 @@ export class AppComponent implements OnInit{
     )
   }
   katego(x){
-    this.ht.get("http://localhost:3000/go/list/kategoriDanDaniDanu"+x)
-    .subscribe(
-      result=>{
-        console.log(result.json())
-      },
-      error=>{
-        console.log(error)
-      }
-    )
+
+    this.roo.navigate([""],{queryParams:{kategori:x}})
+    location.reload()
   }
 }

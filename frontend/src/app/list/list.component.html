@@ -1,7 +1,14 @@
 
-<div class=" col-md-3" style="height: 200px; " *ngFor="let x of units">
-  <img class="img-responsive" style="max-width:80%;max-height:80%;" src="{{x.Gambar}}" alt="">
-  <h3>{{x.Nama}}</h3>
-  <p>IDR {{x.Harga}}</p>
-
+<div class=" col-md-3" style="height:auto;text-align: center;"  *ngFor="let x of units">
+  <div routerLink="{{x._id}}">
+    <div class="centered" style="height: 200px; " >
+      <img class="img-responsive" style="max-width:80%;max-height:80%;" src="{{x.Gambar}}" alt="">
+    </div>
+    <h3>{{x.Nama}}</h3>
+    <p>IDR {{x.Harga}}</p>
+  </div>
 </div>
+
+<div *ngIf="kategori==true" class= "col-md-12">
+    <button  (click)="refresh()">remove search filter</button>
+    </div>
