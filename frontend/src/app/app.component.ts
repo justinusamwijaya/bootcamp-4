@@ -23,4 +23,15 @@ export class AppComponent implements OnInit{
       }
     )
   }
+  katego(x){
+    this.ht.get("http://localhost:3000/go/list/kategoriDanDaniDanu"+x)
+    .subscribe(
+      result=>{
+        console.log(result.json())
+      },
+      error=>{
+        console.log(error)
+      }
+    )
+  }
 }
