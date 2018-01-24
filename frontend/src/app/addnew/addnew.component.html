@@ -1,3 +1,18 @@
-<p>
-  addnew works!
-</p>
+
+  <form #i="ngForm" (ngSubmit)="AddProduct(i)" action="" style="color:#bdbdbd; margin-bottom:100px;">
+     <label class="col-md-offset-3" for="">Nama</label> <br>
+      <input name="Nama" class="col-md-offset-3 col-md-6 noborder inputtype" type="text" ngModel><br><br>
+      <label class="col-md-offset-3" for="">Harga</label> <br>
+      <input name="Harga" class="col-md-offset-3 col-md-6 noborder inputtype" type="number" ngModel><br><br>
+      <label class="col-md-offset-3" for="">Kategori</label> <br>
+      <input name="Kategori"class="col-md-offset-3 col-md-6 noborder inputtype" type="text" ngModel><br><br>
+      <label class="col-md-offset-3" for="">Gambar</label> <br><br>
+  
+      <input class="inputfile col-md-offset-3" id="Gambar"style="" name="Gambar" (change)="fileChange($event)" type="file" multiple >
+      
+      <!-- <label for="Gambar" >Choose a file</label> -->
+  
+        <button class="col-md-offset-8">Cancel</button>
+        <button type="submit" >Submit</button>
+    </form>
+  

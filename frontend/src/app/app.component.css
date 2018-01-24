@@ -26,3 +26,6 @@ a:hover{
     text-decoration: none;
     color:rgb(43, 43, 43);
 }
+a:active,a:focus{
+    text-decoration: none;
+}
