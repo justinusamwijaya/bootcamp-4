@@ -29,5 +29,23 @@ export class DetailComponent implements OnInit {
       }
     )
   }
+  tocart(x){
+    let form = new FormData()
+    let option = new RequestOptions({headers:new Headers({})})
+    form.append("ProductId",this.units._id)
+    form.append("ProductName",this.units.Nama)
+    form.append("Picture",this.units.Gambar)
+    form.append("Price",this.units.Harga)
+    
+    this.ht.post("http://localhost:3000/go/cart",form)
+    .subscribe(
+      result=>{
+        location.reload()
+      },
+      error=>{
+        console.log(error)
+      }
+    )
+  }
 
 }

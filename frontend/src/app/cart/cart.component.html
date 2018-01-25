@@ -1,3 +1,14 @@
-<p>
-  cart works!
-</p>
+<div *ngFor="let x of cart">
+
+
+  <div>{{x.Picture}}</div>
+  <div>
+    {{x.ProductName}}
+    {{x.Price}}
+    {{x.Quantity}}
+  </div>
+</div>
+<div>
+    {{Total}}
+  <button (click)="checkout()">CheckOut</button>
+  </div>

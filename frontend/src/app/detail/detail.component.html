@@ -8,5 +8,5 @@
   <h1>{{ (units != null) ? units.Nama : '' }}</h1>
   <h2>IDR {{ (units != null) ? units.Harga : '' }}</h2>
   <p>category: {{ (units != null) ? units.Kategori : '' }} </p><br><br>
-  <button (click)="tocart(units._id)">Add to Cart</button>
+  <button (click)="tocart()">Add to Cart</button>
 </div>

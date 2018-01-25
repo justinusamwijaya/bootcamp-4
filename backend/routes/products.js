@@ -86,71 +86,51 @@ roo
         })
     }
 })
-.post("/cart/:id",(req,res)=>{
-    pro.findById(req.params.id,(mai,result)=>{
-        if(mai)res.status(500).send(mai);
-        else{
+.post("/cart",(req,res)=>{
 
-                    cart.find({},(carterror,cartresult)=>{
-                    if(carterror)res.send(carterror);
-                    else {
-                        if(cartresult.length==0){
-                    
-                            newObj = new cart({
-                                ProductId:result._id,
-                                ProductName:result.Nama,
-                                Picture:result.Gambar,
-                                Price:result.Harga,
-                                Quantity:1,
-                            })
-                            newObj.save((error)=>{
-                                if(error)res.send(error)
-                                else console.log(newObj._id);res.json(newObj);
-                            })
-                            }else{
-                            for(j=0;j<cartresult.length;j++){
-                                if(cartresult[j].ProductId==result._id){
-
-                                    Obj={
-                                        ProductId:cartresult[j].ProductId,
-                                        ProductName:cartresult[j].ProductName,
-                                        Picture:cartresult[j].Picture,
-                                        Price:cartresult[j].Price,
-                                        Quantity:cartresult[j].Quantity+1
-                                    }
-                                    console.log(Obj.Quantity)
-                                    cart.findOneAndUpdate({ProductId:result._id},Obj,(updateerror,updateresult)=>{
-                                        if(updateerror) res.send(updateerror);
-                                        else res.json(updateresult)
-                                    })
-                                }
-                                else if(cartresult[j].ProductId==result._id&&j==cartresult.length-1){
-                                    console.log(cartresult[j].Product._id)
-                                    console.log(result._id)
-                                newObj = new cart({
-                                    ProductId:result._id,
-                                    ProductName:result.Nama,
-                                    Picture:result.Gambar,
-                                    Price:result.Harga,
-                                    Quantity:1,
-                                })
-                                newObj.save((error)=>{
-                                    if(error)res.send(error)
-                                    else res.json(newObj)
-                                        })
-                                    }
-                                }
-                            }
+    cart.findOne({ProductId:req.body.ProductId},(carterror,cartresult)=>{
+        if(carterror)res.send(carterror);
+        else {
+            console.log(cartresult)
+            if(cartresult==null){
+                newObj = new cart({
+                    ProductId:req.body.ProductId,
+                    ProductName:req.body.ProductName,
+                    Picture:req.body.Picture,
+                    Price:req.body.Price,
+                    Quantity:1,
+                })
+                newObj.save((error)=>{
+                    if(error)res.send(error)
+                    else res.json(newObj)
+                        })
+                    }else{
+                        Obj={
+                            Quantity:cartresult.Quantity+1
                         }
-                    })            
+                        cart.findOneAndUpdate({ProductId:req.body.ProductId},Obj,(error,result)=>{
+                            if(error)res.send(error);
+                            else{
+                                res.json(result)
+                            }
+                        })
+                    }
             }
-        })
+        }
+                              
+    )      
 })
 .get("/cart",(req,res)=>{
     cart.find({},(err,result)=>{
         if(err)res.json(err)
         else res.json(result)
     })
+})
+.delete("/cart",(req,res)=>{
+        cart.remove({},(err,result)=>{
+            if(err)res.json(err)
+            else res.json(result)
+        })
 })
 
 
