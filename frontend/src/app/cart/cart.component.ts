@@ -11,7 +11,7 @@ export class CartComponent implements OnInit {
 
   cart:any
   Total=0
-  constructor(private ht:Http) { }
+  constructor(private ht:Http, private roo:Router) { }
 
   ngOnInit() {
     this.ht.get("http://localhost:3000/go/cart")
@@ -34,5 +34,8 @@ checkout(){
     }
   )
 
+}
+continue(){
+  this.roo.navigate([""])
 }
 }

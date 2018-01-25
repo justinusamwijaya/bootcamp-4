@@ -1,14 +1,20 @@
-<div *ngFor="let x of cart">
+<div class = "col-md-12" style=" height: 200px;margin-top:30px;margin-bottom: 50px;border-bottom:1px solid rgba(129, 129, 129, 0.425);" *ngFor="let item of cart">
 
+    <div class="col-md-3" style="height:100%;">
+      <img style="max-height:80%;max-width:80%;" src="{{item.Picture}}" alt="stillnopictureyet">
+    </div>
+    <label for="">Nama Produk:</label>{{item.ProductName}}
+    <br>
+    <label for="">Harga:</label>{{item.Price}}
 
-  <div>{{x.Picture}}</div>
-  <div>
-    {{x.ProductName}}
-    {{x.Price}}
-    {{x.Quantity}}
-  </div>
+    <div style = "font-size:120%;position:relative; float:right; margin-top:30px;text-align:right;">
+      <p>Quantity: {{item.Quantity}}  <span style="margin-left:30px;">Total: {{item.Quantity*item.Price}}</span> </p>
+    </div>
+  
+
 </div>
 <div>
-    {{Total}}
-  <button (click)="checkout()">CheckOut</button>
-  </div>
+  <button style="position:relative;float:right;margin-left: 50px;" (click)="checkout()">Check Out</button>
+  <button style="position:relative;float:right;margin-left: 50px;" (click)="continue()">Continue Shopping</button>
+</div>
+ <b style="position:relative;float:right;font-size:120%; margin-bottom: 100px;">Total Pembayaran : {{Total}}</b>
