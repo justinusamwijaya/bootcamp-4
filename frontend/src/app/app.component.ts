@@ -9,10 +9,19 @@ import {Router} from "@angular/router";
 })
 export class AppComponent implements OnInit{
   kategori = []
+  cart=0;
   constructor(private ht:Http, private roo:Router){
 
   }
   ngOnInit(){
+    this.ht.get("http://localhost:3000/go/cart")
+    .subscribe(
+      result=>{
+        for(var i=0;i<result.json().length;i++){
+          this.cart+=result.json()[i].Quantity
+        }
+      }
+    )
     this.ht.get("http://localhost:3000/go/cate")
     .subscribe(
       result=>{
